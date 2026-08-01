@@ -1,0 +1,251 @@
+# ---------------------------------------------------------------------------
+# feeds.yaml
+# Add / remove freely. Structure:
+#   categories:
+#     <key>:
+#       label: "Text shown in the Telegram message"
+#       feeds:
+#         - name: "Short source name"
+#           url:  "https://.../feed"
+#           boost: 1        # optional, adds to the relevance score
+# ---------------------------------------------------------------------------
+
+categories:
+
+  # ---------------- 1. Core security news ----------------
+  news:
+    label: "🔴 SECURITY NEWS"
+    feeds:
+      - name: "BleepingComputer"
+        url: "https://www.bleepingcomputer.com/feed/"
+        boost: 1
+      - name: "The Hacker News"
+        url: "https://feeds.feedburner.com/TheHackersNews"
+      - name: "Krebs on Security"
+        url: "https://krebsonsecurity.com/feed/"
+        boost: 1
+      - name: "The Record"
+        url: "https://therecord.media/feed"
+      - name: "Dark Reading"
+        url: "https://www.darkreading.com/rss.xml"
+      - name: "SecurityWeek"
+        url: "https://www.securityweek.com/feed/"
+      - name: "Schneier on Security"
+        url: "https://www.schneier.com/feed/"
+      - name: "Malwarebytes Labs"
+        url: "https://www.malwarebytes.com/blog/feed/index.xml"
+
+  # ---------------- 2. Vulns, CVEs, exploits ----------------
+  vulns:
+    label: "💥 VULNS / EXPLOITS / CVE"
+    feeds:
+      - name: "CISA Advisories"
+        url: "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+        boost: 2
+      - name: "SANS ISC Diary"
+        url: "https://isc.sans.edu/rssfeed_full.xml"
+        boost: 1
+      - name: "Exploit-DB"
+        url: "https://www.exploit-db.com/rss.xml"
+        boost: 2
+      - name: "Packet Storm"
+        url: "https://rss.packetstormsecurity.com/files/"
+      - name: "Project Zero"
+        url: "https://googleprojectzero.blogspot.com/feeds/posts/default"
+        boost: 2
+      - name: "ZDI Published Advisories"
+        url: "https://www.zerodayinitiative.com/rss/published/"
+        boost: 1
+      - name: "Unit 42"
+        url: "https://unit42.paloaltonetworks.com/feed/"
+      - name: "Cisco Talos"
+        url: "https://blog.talosintelligence.com/rss/"
+
+  # ---------------- 3. Offensive / red team / bug bounty ----------------
+  offensive:
+    label: "🎯 RED TEAM / BUG BOUNTY"
+    feeds:
+      - name: "r/netsec"
+        url: "https://www.reddit.com/r/netsec/.rss"
+        boost: 1
+      - name: "r/bugbounty"
+        url: "https://www.reddit.com/r/bugbounty/.rss"
+      - name: "PortSwigger Research"
+        url: "https://portswigger.net/research/rss"
+        boost: 2
+      - name: "Intigriti Blog"
+        url: "https://blog.intigriti.com/feed/"
+      - name: "Pentester Land"
+        url: "https://pentester.land/rss.xml"
+      - name: "SpecterOps"
+        url: "https://posts.specterops.io/feed"
+      - name: "HackerOne Blog"
+        url: "https://www.hackerone.com/blog/rss.xml"
+
+  # ---------------- 4. Blue team / defense / detection ----------------
+  defense:
+    label: "🛡️ BLUE TEAM / DETECTION"
+    feeds:
+      - name: "Microsoft Security Blog"
+        url: "https://www.microsoft.com/en-us/security/blog/feed/"
+      - name: "Google Cloud Threat Intel"
+        url: "https://cloud.google.com/blog/topics/threat-intelligence/rss/"
+      - name: "Elastic Security Labs"
+        url: "https://www.elastic.co/security-labs/rss/feed.xml"
+      - name: "Red Canary"
+        url: "https://redcanary.com/feed/"
+      - name: "NCSC UK"
+        url: "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml"
+
+  # ---------------- 5. Tool releases (GitHub Atom feeds) ----------------
+  # Pattern: https://github.com/<owner>/<repo>/releases.atom
+  tools:
+    label: "🧰 TOOL RELEASES"
+    feeds:
+      - name: "nuclei"
+        url: "https://github.com/projectdiscovery/nuclei/releases.atom"
+        boost: 1
+      - name: "sqlmap"
+        url: "https://github.com/sqlmapproject/sqlmap/releases.atom"
+      - name: "ffuf"
+        url: "https://github.com/ffuf/ffuf/releases.atom"
+      - name: "Metasploit"
+        url: "https://github.com/rapid7/metasploit-framework/releases.atom"
+      - name: "Impacket"
+        url: "https://github.com/fortra/impacket/releases.atom"
+      - name: "BloodHound"
+        url: "https://github.com/SpecterOps/BloodHound/releases.atom"
+      - name: "Wireshark"
+        url: "https://github.com/wireshark/wireshark/releases.atom"
+      - name: "Ghidra"
+        url: "https://github.com/NationalSecurityAgency/ghidra/releases.atom"
+        boost: 1
+      - name: "Burp Suite Releases"
+        url: "https://portswigger.net/burp/releases/rss"
+      - name: "Nmap Changelog"
+        url: "https://github.com/nmap/nmap/releases.atom"
+      - name: "Mimikatz"
+        url: "https://github.com/gentilkiwi/mimikatz/releases.atom"
+      - name: "Caido"
+        url: "https://github.com/caido/caido/releases.atom"
+
+  # ---------------- 6. Operating systems ----------------
+  os:
+    label: "💻 OS UPDATES"
+    feeds:
+      - name: "Kali Linux"
+        url: "https://www.kali.org/rss.xml"
+        boost: 2
+      - name: "Ubuntu Security Notices"
+        url: "https://ubuntu.com/security/notices/rss.xml"
+      - name: "Ubuntu Blog"
+        url: "https://ubuntu.com//blog/feed"
+      - name: "Debian Security"
+        url: "https://www.debian.org/security/dsa-long"
+      - name: "Windows Blogs"
+        url: "https://blogs.windows.com/feed/"
+      - name: "Windows IT Pro Blog"
+        url: "https://techcommunity.microsoft.com/gxcuf89792/rss/board?board.id=Windows-IT-Pro-Blog"
+      - name: "Arch Linux News"
+        url: "https://archlinux.org/feeds/news/"
+      - name: "MacRumors"
+        url: "https://feeds.macrumors.com/MacRumors-All"
+      - name: "Linux Kernel Releases"
+        url: "https://www.kernel.org/feeds/kdist.xml"
+
+  # ---------------- 7. AI / local AI / ML ----------------
+  ai:
+    label: "🤖 AI / LOCAL AI"
+    feeds:
+      - name: "Hugging Face Blog"
+        url: "https://huggingface.co/blog/feed.xml"
+      - name: "r/LocalLLaMA"
+        url: "https://www.reddit.com/r/LocalLLaMA/.rss"
+        boost: 1
+      - name: "Ollama Releases"
+        url: "https://github.com/ollama/ollama/releases.atom"
+        boost: 2
+      - name: "Open WebUI Releases"
+        url: "https://github.com/open-webui/open-webui/releases.atom"
+        boost: 1
+      - name: "llama.cpp Releases"
+        url: "https://github.com/ggml-org/llama.cpp/releases.atom"
+      - name: "OpenAI News"
+        url: "https://openai.com/news/rss.xml"
+      - name: "Google AI Blog"
+        url: "https://blog.google/technology/ai/rss/"
+      - name: "MIT Tech Review AI"
+        url: "https://www.technologyreview.com/topic/artificial-intelligence/feed"
+
+  # ---------------- 8. Dev / programming / open source ----------------
+  dev:
+    label: "⚙️ DEV / OPEN SOURCE"
+    feeds:
+      - name: "Hacker News (front page)"
+        url: "https://hnrss.org/frontpage?points=150"
+      - name: "GitHub Blog"
+        url: "https://github.blog/feed/"
+      - name: "GitHub Changelog"
+        url: "https://github.blog/changelog/feed/"
+      - name: "Python Insider"
+        url: "https://blog.python.org/feeds/posts/default"
+      - name: "Docker Blog"
+        url: "https://www.docker.com/blog/feed/"
+      - name: "r/opensource"
+        url: "https://www.reddit.com/r/opensource/.rss"
+
+  # ---------------- 9. Design / video / photo ----------------
+  design:
+    label: "🎨 DESIGN / VIDEO / PHOTO"
+    feeds:
+      - name: "Adobe Blog"
+        url: "https://blog.adobe.com/en/feed"
+      - name: "PetaPixel"
+        url: "https://petapixel.com/feed/"
+      - name: "Blender News"
+        url: "https://www.blender.org/feed/"
+      - name: "DaVinci / Blackmagic News"
+        url: "https://www.provideocoalition.com/feed/"
+      - name: "Smashing Magazine"
+        url: "https://www.smashingmagazine.com/feed/"
+
+  # ---------------- 10. Hardware / electronics / robotics ----------------
+  hardware:
+    label: "🔌 HARDWARE / ROBOTICS"
+    feeds:
+      - name: "Hackaday"
+        url: "https://hackaday.com/feed/"
+      - name: "iFixit News"
+        url: "https://www.ifixit.com/News/rss"
+      - name: "IEEE Spectrum Robotics"
+        url: "https://spectrum.ieee.org/feeds/topic/robotics.rss"
+      - name: "Tom's Hardware"
+        url: "https://www.tomshardware.com/feeds/all"
+
+  # ---------------- 11. Arabic sources ----------------
+  arabic:
+    label: "🌍 المصادر العربية"
+    feeds:
+      - name: "AITnews"
+        url: "https://aitnews.com/feed/"
+      - name: "Tech-WD"
+        url: "https://www.tech-wd.com/wd/feed/"
+      - name: "Unlimit Tech"
+        url: "https://www.unlimit-tech.com/feed"
+      - name: "Arageek Tech"
+        url: "https://www.arageek.com/tech/feed"
+      # Google Alerts in Arabic -> see README step 9 to generate these URLs
+      # - name: "تنبيه: أمن سيبراني"
+      #   url: "https://www.google.com/alerts/feeds/XXXXXXXXXXXX/YYYYYYYYYYYY"
+
+  # ---------------- 12. Grants, scholarships, CTFs, opportunities ----------------
+  # These mostly come from Google Alerts RSS + Reddit search RSS. See README step 9.
+  opportunities:
+    label: "🎓 منح / فرص / CTF"
+    feeds:
+      - name: "CTFtime upcoming"
+        url: "https://ctftime.org/event/list/upcoming/rss/"
+      - name: "r/scholarships"
+        url: "https://www.reddit.com/r/scholarships/.rss"
+      # - name: "Google Alert: cybersecurity scholarship"
+      #   url: "https://www.google.com/alerts/feeds/XXXXXXXXXXXX/ZZZZZZZZZZZZ"
