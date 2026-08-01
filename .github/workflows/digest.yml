@@ -8,24 +8,19 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: cyber-digest
-  cancel-in-progress: false
-
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_PUSH }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-          cache: pip
+          python-version: "3.11"
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -39,12 +34,19 @@ jobs:
           MAX_PER_FEED: "3"
           MIN_SCORE: "0"
           SEND_EMPTY: "0"
+          DRY_RUN: "0"
         run: python bot.py
 
-      - name: Commit dedupe state
+      - name: Commit state
         run: |
-          git config user.name  "github-actions[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state/seen.json
-          git diff --staged --quiet || git commit -m "chore: update seen state [skip ci]"
+          git diff --staged --quiet || git commit -m "chore: update seen state"
           git push
+
+      - name: Ping healthcheck
+        if: success()
+        env:
+          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+        run: curl -fsS --retry 3 "$HEALTHCHECK_URL"
